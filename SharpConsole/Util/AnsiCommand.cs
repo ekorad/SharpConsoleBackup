@@ -4,7 +4,7 @@
 /// Provides definitions for the most common ANSI commands.
 /// </summary>
 /// <remarks>
-/// The ANSI command code resides at the end of an ANSI sequence.
+/// The ANSI command code resides at the end of an ANSI control sequence.
 /// <para>See <see href="https://en.wikipedia.org/wiki/ANSI_escape_code">
 /// ANSI Escape Code</see> for further details.</para>
 /// </remarks>
