@@ -5,6 +5,8 @@
 /// </summary>
 /// <remarks>
 /// The ANSI command code resides at the end of an ANSI sequence.
+/// <para>See <see href="https://en.wikipedia.org/wiki/ANSI_escape_code">
+/// ANSI Escape Code</see> for further details.</para>
 /// </remarks>
 public enum AnsiCommand
 {
@@ -49,7 +51,7 @@ public enum AnsiCommand
     /// </summary>
     ScrollDown = 'T',
     /// <summary>
-    /// Set the colors and style of the following characters.
+    /// Set the colors and style of the text.
     /// </summary>
     SelectGraphicRendition = 'm'
 }

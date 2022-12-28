@@ -8,11 +8,11 @@
 /// An ANSI sequence is composed of the following:
 /// <list type="bullet">
 ///     <item>
-///         <term>The sequence prefix ("\x1b[")</term>
+///         <term>The sequence prefix ("<c>\x1b[</c>")</term>
 ///         <description>a standard escape sequence</description>
 ///     </item>
 ///     <item>
-///         <term>A sequence of bytes separated by semicolons (';')</term>
+///         <term>A sequence of bytes separated by semicolons ('<c>;</c>')</term>
 ///         <description>specifies the values of the parameters</description>
 ///     </item>
 ///     <item>
@@ -26,7 +26,7 @@
 /// See <seealso href="https://en.wikipedia.org/wiki/ANSI_escape_code">
 /// ANSI Escape Code</seealso> for further details.
 /// </remarks>
-internal class AnsiEscapeSequence
+public class AnsiEscapeSequence
 {
     /// <summary>
     /// Represents the beginning of any ANSI sequence.
@@ -53,10 +53,10 @@ internal class AnsiEscapeSequence
     /// <summary>
     /// Construct a complete, usable, ANSI sequence.
     /// </summary>
-    /// <param name="command">the operation that will be performed</param>
-    /// <param name="byteCodes">the parameter values of the sequence</param>
+    /// <param name="command">The operation that will be performed</param>
+    /// <param name="byteCodes">The parameter values of the sequence</param>
     /// <exception cref="ArgumentOutOfRangeException">
-    ///     if the supplied ANSI command is not a valid enum value
+    ///     Thrown if the supplied ANSI command is not a valid enum value
     /// </exception>
     public AnsiEscapeSequence(AnsiCommand command, params byte[] byteCodes)
         : this(command, new AnsiByteSequence(byteCodes))
@@ -66,10 +66,10 @@ internal class AnsiEscapeSequence
     /// <summary>
     /// Construct a complete, usable, ANSI sequence.
     /// </summary>
-    /// <param name="command">the operation that will be performed</param>
-    /// <param name="byteSequence">the byte sequence</param>
+    /// <param name="command">The operation that will be performed</param>
+    /// <param name="byteSequence">The byte sequence</param>
     /// <exception cref="ArgumentOutOfRangeException">
-    ///     if the supplied ANSI command is not a valid enum value
+    ///     Thrown if the supplied ANSI command is not a valid enum value
     /// </exception>
     public AnsiEscapeSequence(AnsiCommand command, AnsiByteSequence byteSequence)
     {
@@ -89,22 +89,22 @@ internal class AnsiEscapeSequence
     /// <remarks>
     /// See <see cref="GenerateEscapeSequence"/> for further details.
     /// </remarks>
-    /// <returns>the complete ANSI escape sequence</returns>
+    /// <returns>The complete ANSI escape sequence</returns>
     public override string ToString() => _escapeSequence.Value;
 
     /// <summary>
     /// Allows the direct conversion of an <see cref="AnsiEscapeSequence"/> to a
     /// string.
     /// </summary>
-    /// <param name="sequence">the sequence to be converted</param>
+    /// <param name="sequence">The sequence to be converted</param>
     public static implicit operator string(AnsiEscapeSequence sequence) =>
         sequence._escapeSequence.Value;
 
     /// <summary>
-    /// Appends the "\x1b[" escape sequence and the ANSI command to the byte
+    /// Appends the <c>"\x1b["</c> escape sequence and the ANSI command to the byte
     /// sequence (<see cref="AnsiByteSequence"/>).
     /// </summary>
-    /// <returns>the complete ANSI escape sequence</returns>
+    /// <returns>The complete ANSI escape sequence</returns>
     private string GenerateEscapeSequence() =>
         SequencePrefix + ByteSequence.ToString() + (char)Command;
 }

@@ -29,12 +29,12 @@ public class AnsiByteSequence
     /// <summary>
     /// Construct an ANSI byte sequence.
     /// </summary>
-    /// <param name="byteCodes">the byte codes of the sequence</param>
+    /// <param name="byteCodes">The byte codes of the sequence</param>
     /// <exception cref="ArgumentNullException">
-    ///     if the byte code array is null
+    ///     Thrown if the byte code array is null
     /// </exception>
     /// <exception cref="ArgumentException">
-    ///     if the byte code array is empty
+    ///     Thrown if the byte code array is empty
     /// </exception>
 	public AnsiByteSequence(params byte[] byteCodes)
 	{
@@ -61,18 +61,18 @@ public class AnsiByteSequence
     /// <remarks>
     /// See <see cref="GenerateByteSequence"/> for further details.
     /// </remarks>
-    /// <returns>the byte sequence</returns>
+    /// <returns>The byte sequence</returns>
     public override string ToString() => _byteSequence.Value;
 
     /// <summary>
     /// Converts the byte codes (<see cref="ByteCodes"/>) to a string of bytes
-    /// separated by semicolons (';').
+    /// separated by semicolons ('<c>;</c>').
     /// </summary>
     /// <remarks>
     /// This function is only used for initializing the cache object
     /// (<see cref="_byteSequence"/>).
     /// </remarks>
-    /// <returns>the byte sequence</returns>
+    /// <returns>The byte sequence</returns>
     private string GenerateByteSequence() =>
         string.Join(ByteCodeSeparator, ByteCodes);
 }
