@@ -1,7 +1,10 @@
-﻿using SharpConsole.Util;
-AnsiControlSequence customSequence = new(AnsiCommand.SelectGraphicRendition,
-    new AnsiArgumentSequence(38, 5, 2),
-    new AnsiArgumentSequence(4));
-AnsiControlSequence resetAllSGR = new(AnsiCommand.SelectGraphicRendition, 0);
-Console.WriteLine(customSequence + "Hello world using a custom style!");
-Console.WriteLine(resetAllSGR + "Hello default world!");
+﻿using SharpConsole.SGR;
+using SharpConsole.Util;
+
+ForegroundColor<RGBColor> fgColor = new(new(60, 60, 60));
+BackgroundColor<IndexedColor> bgColor = new(new(StandardColor.White));
+AnsiControlSequence colorSeq
+    = new(AnsiCommand.SelectGraphicRendition, fgColor, bgColor);
+AnsiControlSequence resetSGR = new(AnsiCommand.SelectGraphicRendition, 0);
+
+Console.WriteLine(colorSeq + "Hello, world!" + resetSGR);
